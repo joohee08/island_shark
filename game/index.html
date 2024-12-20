@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>three.js로 케릭터 불러오기</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+        #changeAction {
+        position: absolute;
+        top: 4px;
+        left: 1px;
+        z-index: 10; /* Three.js 캔버스 위에 표시되도록 설정 */
+        font-size: 20px;
+        padding: -6px;
+    }
+    </style>
+    
+</head>
+<body>
+    <script src="./js/three.min.js"></script>
+    <!-- FFLate 라이브러리 -->
+    <script src="./js/index.min.js"></script>
+    <!-- <script src="./js/OrbitControls.js"></script> -->
+    <!-- <script src="cdn.jsdelivr.net/npm/three@latest/examples/js/controls/OrbitControls.js"></script> -->
+    <script src="./js/FBXLoader.js"></script>
+    <script src="./js/GamePad.js"></script>
+    <div id="webgl-container"></div>
+    <script src="game.js"></script>
+    <script type="module">
+        import * as THREE from './js/three.module.js';
+        import { OrbitControls } from './js/OrbitControls.js';
+    
+        document.addEventListener("DOMContentLoaded", function () {
+            const game = new Game(THREE, OrbitControls);
+            window.game = game;
+        });
+    </script>
+   
+
+    <select id="changeAction" onchange="javascript:game.changeAction()">
+        <option selected value="idle">대기</option>
+        <option value="run">달리기</option>
+        <option value="kick">공격</option>
+        <option value="walk">걷기</option>
+        <option value="backward">뒤로걷기</option>
+    </select>
+</body>
+</html>
