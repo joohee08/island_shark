@@ -3,14 +3,14 @@ class GamePad{
         this.pc = param.pc;
         const padHole = document.createElement("div");
         padHole.style.cssText
-        ="position:absolute; width:120px; height:120px; bottom:50px;"
-        +"background:rgba(243,97,166,0.5); border:#353535 solid medium; border-radius:50%; left:50%;"
+        ="position:absolute; width:80px; height:80px; bottom:50px;"
+        +"background:rgba(243,97,166,0.5); border:#353535 solid medium; border-radius:50%; left:75%;"
         const stick = document.createElement("div");
-        stick.style.cssText="position:absolute; left:30px; top:30px; width:60px; height:60px; border-radius:50%; background:#FF00DD;"
+        stick.style.cssText="position:absolute; left:20px; top:20px; width:40px; height:40px; border-radius:50%; background:#FF00DD;"
         padHole.appendChild(stick);
         document.body.appendChild(padHole);
         this.domElement = stick;
-        this.maxRadius = 60*60;
+        this.maxRadius = 50*50;
         this.game = param.game;
         this.location = {left:this.domElement.offsetLeft,top:this.domElement.offsetTop};
         const pad = this;
@@ -59,8 +59,8 @@ class GamePad{
             const result = Math.sqrt(calLoc);
             left/=result;
             top/=result;
-            left*=60;
-            top*=60;
+            left*=50;
+            top*=50;
         }
         this.domElement.style.top = `${top + this.location.top}px`;
         this.domElement.style.left = `${left + this.location.left}px`;
